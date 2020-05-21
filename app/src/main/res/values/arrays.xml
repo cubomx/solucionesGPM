@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="classes">
+        <item>Nombre</item>
+        <item>Nivel</item>
+        <item>Salón</item>
+        <item>Horario</item>
+        <item>Profesor</item>
+
+    </string-array>
+</resources>

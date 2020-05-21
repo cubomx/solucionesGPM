@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.RecyclerView.Adapter;
 import java.util.ArrayList;
 
 public class RecylerAdapter extends RecyclerView.Adapter <RecylerAdapter.MyViewHolder>  {
-    private ArrayList<Clase> clases;
+    private ArrayList<String> clases;
 
-    public  RecylerAdapter (ArrayList<Clase> clases){
+    public  RecylerAdapter (ArrayList<String> clases){
         this.clases = clases;
     }
 
@@ -35,7 +35,8 @@ public class RecylerAdapter extends RecyclerView.Adapter <RecylerAdapter.MyViewH
         /*
             TODO: Modify the ArrayList parameter to String to receive anything to put on the cards
          */
-        holder.CardText.setText(clases.get(position).getName() + "\n" + clases.get(position).getProfessor());
+        holder.CardText.setText(clases.get(position));
+        System.out.println(clases.get(position) + "nnnnnnnnnnnnnnn");
     }
 
     @Override

@@ -4,8 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,6 +28,7 @@ public class VerClase extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager manager;
     private RecylerAdapter adapter;
+    private ArrayList selectedItems;
     DatabaseReference db;
     FirebaseAuth mAuth;
     FirebaseUser user;
@@ -43,25 +50,82 @@ public class VerClase extends AppCompatActivity {
             Making the reference to the user database place
          */
         db = FirebaseDatabase.getInstance().getReference("clases");
-        DatabaseReference ref = db.child(user_).getRef();
+        final DatabaseReference ref = db.child(user_).getRef();
 
+
+
+        /*
+            List of items display
+         */
         recyclerView = findViewById(R.id.rview);
         manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
 
+        Button btnSelect =  findViewById(R.id.btnSelectClass);
+        final Dialog dialog = showDialog(savedInstanceState, ref);
 
-        /*
-            This ArrayList is the 3 button selection of what the user wants to see
-            on the screen
-            TODO: it shouldn't be done by code (ask the user)
-         */
-        ArrayList<String> opciones = new ArrayList<>();
-        opciones.add("name");
-        opciones.add("professor");
-        getClasses(ref, opciones);
+        btnSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.show();
+            }
+        });
+
     }
 
-    private void showClases(ArrayList<Clase> clases){
+
+
+    private void askFor(){
+        Toast toast = Toast.makeText(this, "Debes seleccionar exactamente 3", Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    private Dialog showDialog(Bundle savedInstanceState, final DatabaseReference ref){
+        selectedItems = new ArrayList();  // Where we track the selected items
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // Set the dialog title
+        builder.setTitle(R.string.pick_toppings)
+                // Specify the list array, the items to be selected by default (null for none),
+                // and the listener through which to receive callbacks when items are selected
+                .setMultiChoiceItems(R.array.classes, null,
+                        new DialogInterface.OnMultiChoiceClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which,
+                                                boolean isChecked) {
+                                if (isChecked) {
+                                    // If the user checked the item, add it to the selected items
+                                    selectedItems.add(which);
+                                } else if (selectedItems.contains(which)) {
+                                    // Else, if the item is already in the array, remove it
+                                    selectedItems.remove(Integer.valueOf(which));
+                                }
+                            }
+                        })
+                // Set the action buttons
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        if (selectedItems.size() == 3){
+                            // Retrieving the data about the classes and showing to the user
+                            getClasses(ref, selectedItems);
+                        }
+                        else{
+                            // Telling the user that exactly 3 options must be selected
+                            askFor();
+                        }
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+
+        return builder.create();
+    }
+
+    private void showClases(ArrayList<String> clases){
         /*
             Adding the cards to the recyclerView to show all the info related to the classes
          */
@@ -70,7 +134,7 @@ public class VerClase extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    private void getClasses (DatabaseReference ref, final ArrayList<String> opciones){
+    private void getClasses (DatabaseReference ref, final ArrayList<Integer> opciones){
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -80,39 +144,41 @@ public class VerClase extends AppCompatActivity {
                 Map<String, Object> data = (Map<String, Object>) dataSnapshot.getValue();
 
 
-                ArrayList<Clase> clases = new ArrayList<>();
+                ArrayList<String> clases = new ArrayList<>();
                 for (Map.Entry<String, Object> entry : data.entrySet()){
-                    Clase clase = new Clase(null, null, null, null, null, null);
+
                     Map info = (Map) entry.getValue();
                     // info.get(<specific key>);
 
                     /*
                         Getting the values from the options selected by the user
                      */
-                    for (String item : opciones){
+                    StringBuilder stringBuilder = new StringBuilder();
+                    for (Integer item : opciones){
+                        System.out.println(item);
                         switch (item){
-                            case "claseId":
-                                clase.setclaseId(info.get(item).toString());
+                            case 0:
+                                System.out.println(info.get("name").toString());
+                                stringBuilder.append(info.get("name").toString() + "\n");
                                 break;
-                            case "classroom":
-                                clase.setClassroom(info.get(item).toString());
+                            case 1:
+                                stringBuilder.append(info.get("level").toString() +  "\n");
                                 break;
-                            case "level":
-                                clase.setLevel(info.get(item).toString());
+                            case 2:
+                                stringBuilder.append(info.get("classroom").toString() + "\n");
                                 break;
-                            case "name":
-                                clase.setName(info.get(item).toString());
+                            case 3:
+                                stringBuilder.append(info.get("time").toString()+ "\n");
                                 break;
-                            case "professor":
-                                clase.setProfessor(info.get(item).toString());
+                            case 4:
+                                stringBuilder.append(info.get("professor").toString() + "\n");
                                 break;
-                            case "time":
-                                clase.setTime(info.get(item).toString());
+                            default:
+                                System.out.println("\n\nSIII\n\n");
                                 break;
-
                         }
                     }
-                    clases.add(clase);
+                    clases.add(stringBuilder.toString());
                 }
                 showClases(clases);
             }
