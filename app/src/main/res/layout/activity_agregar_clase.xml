@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/gradiente">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/email_login_form"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/txtAgregarClase"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="20dp"
+                        android:text="Agregar clase"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="24sp" />
+
+                    <EditText
+                        android:id="@+id/NombreM"
+                        android:hint="Nombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:textColor="@color/colorWhite"
+
+                        android:inputType="text" />
+
+                    <EditText
+                        android:id="@+id/ciclo"
+                        android:hint="ciclo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:textColor="@color/colorWhite"
+                        android:inputType="text" />
+                    <EditText
+                        android:id="@+id/nivel"
+                        android:hint="nivel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:textColor="@color/colorWhite"
+
+                        android:inputType="text" />
+
+                    <EditText
+                        android:id="@+id/salon"
+                        android:hint="salon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:textColor="@color/colorWhite"
+                        android:inputType="text" />
+                    <EditText
+                        android:id="@+id/horario"
+                        android:hint="horario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:textColor="@color/colorWhite"
+                        android:inputType="text" />
+                    <EditText
+                        android:id="@+id/maestroClase"
+                        android:hint="maestro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:textColor="@color/colorWhite"
+                        android:inputType="text" />
+
+                    <Button
+                        android:id="@+id/btnAddClase"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Agregar"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>
