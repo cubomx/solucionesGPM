@@ -59,11 +59,11 @@ public class AgregarClase extends AppCompatActivity {
         String maestroV = maestro.getText().toString().trim();
         String horarioV = horario.getText().toString().trim();
         if(!name.isEmpty() && !cicloV.isEmpty()&& !nivelV.isEmpty()&& !salonV.isEmpty()&& !horarioV.isEmpty()){
-            String user_ = user.getEmail().replace(".", "_");
-            DatabaseReference ref = databaseClases.child(user_);
+            String user_ = user.getEmail().replace(".",     "_");
+            DatabaseReference ref = databaseClases.child(user_).getRef();
             String idClase = ref.push().getKey();
             Clase clase = new Clase(idClase,salonV,nivelV,name,maestroV,horarioV);
-            databaseClases.child(idClase).setValue(clase);
+            ref.child(idClase).setValue(clase);
             titulo.setText("clase agregada");
         }
     }
