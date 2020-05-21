@@ -6,6 +6,12 @@
         <item>Salón</item>
         <item>Horario</item>
         <item>Profesor</item>
+    </string-array>
 
+    <string-array name="maestros">
+        <item>Nombre</item>
+        <item>Edad</item>
+        <item>Sexo</item>
+        <item>Clases</item>
     </string-array>
 </resources>

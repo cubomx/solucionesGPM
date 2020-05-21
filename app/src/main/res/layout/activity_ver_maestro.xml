@@ -20,6 +20,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <Button
+                android:id="@+id/btnSelectTeacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btnClassChoices"
+                android:textColor="#FFFFFF" />
+
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"

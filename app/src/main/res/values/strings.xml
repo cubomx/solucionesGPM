@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">solucionesGPM</string>
+
     <string name="btnClassChoices">Seleccionar</string>
     <string name="pick_toppings">Opciones</string>
     <string name="cancel">Cancelar</string>
     <string name="ok">Aceptar</string>>
+
 </resources>

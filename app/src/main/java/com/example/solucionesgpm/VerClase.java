@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -22,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
 public class VerClase extends AppCompatActivity {
@@ -62,7 +64,7 @@ public class VerClase extends AppCompatActivity {
         recyclerView.setLayoutManager(manager);
 
         Button btnSelect =  findViewById(R.id.btnSelectClass);
-        final Dialog dialog = showDialog(savedInstanceState, ref);
+        final Dialog dialog = showDialog(savedInstanceState, ref, this);
 
         btnSelect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,20 +75,11 @@ public class VerClase extends AppCompatActivity {
 
     }
 
-
-
-    private void askFor(){
-        Toast toast = Toast.makeText(this, "Debes seleccionar exactamente 3", Toast.LENGTH_SHORT);
-        toast.show();
-    }
-
-    private Dialog showDialog(Bundle savedInstanceState, final DatabaseReference ref){
+    private Dialog showDialog(Bundle savedInstanceState, final DatabaseReference ref, final Context ctx){
         selectedItems = new ArrayList();  // Where we track the selected items
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         // Set the dialog title
         builder.setTitle(R.string.pick_toppings)
-                // Specify the list array, the items to be selected by default (null for none),
-                // and the listener through which to receive callbacks when items are selected
                 .setMultiChoiceItems(R.array.classes, null,
                         new DialogInterface.OnMultiChoiceClickListener() {
                             @Override
@@ -106,12 +99,13 @@ public class VerClase extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         if (selectedItems.size() == 3){
+                            Collections.sort(selectedItems);
                             // Retrieving the data about the classes and showing to the user
                             getClasses(ref, selectedItems);
                         }
                         else{
                             // Telling the user that exactly 3 options must be selected
-                            askFor();
+                            Messages.askFor(ctx, "Debes seleccionar exactamente 3");
                         }
                     }
                 })
@@ -125,14 +119,7 @@ public class VerClase extends AppCompatActivity {
         return builder.create();
     }
 
-    private void showClases(ArrayList<String> clases){
-        /*
-            Adding the cards to the recyclerView to show all the info related to the classes
-         */
-        adapter = new RecylerAdapter(clases);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapter);
-    }
+
 
     private void getClasses (DatabaseReference ref, final ArrayList<Integer> opciones){
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -155,7 +142,6 @@ public class VerClase extends AppCompatActivity {
                      */
                     StringBuilder stringBuilder = new StringBuilder();
                     for (Integer item : opciones){
-                        System.out.println(item);
                         switch (item){
                             case 0:
                                 System.out.println(info.get("name").toString());
@@ -180,7 +166,10 @@ public class VerClase extends AppCompatActivity {
                     }
                     clases.add(stringBuilder.toString());
                 }
-                showClases(clases);
+                if (clases.size() == 0){
+                    clases.add("No se encontro clase registrada");
+                }
+                Utilities.showItems(clases, adapter, recyclerView);
             }
 
             @Override
