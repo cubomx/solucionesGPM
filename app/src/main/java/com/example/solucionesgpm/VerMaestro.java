@@ -46,5 +46,7 @@ public class VerMaestro extends AppCompatActivity {
         manager = new LinearLayoutManager(this);
         lista.setLayoutManager(manager);
         getTeachers();
+
+        // TODO: the same as the VerClase methods
     }
 }

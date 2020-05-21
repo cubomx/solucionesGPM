@@ -34,8 +34,16 @@ public class AgregarClase extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_clase);
         databaseClases = FirebaseDatabase.getInstance().getReference("clases");
+
+        /*
+            Getting the credentials from the user
+         */
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
+
+        /*
+            Getting all the data from the from
+         */
         mNombre = (EditText) findViewById(R.id.NombreM);
         ciclo = (EditText) findViewById(R.id.ciclo);
         nivel = (EditText) findViewById(R.id.nivel);
@@ -44,6 +52,8 @@ public class AgregarClase extends AppCompatActivity {
         maestro = (EditText) findViewById(R.id.maestroClase);
         btnAdd = (Button) findViewById(R.id.btnAddClase);
         titulo =(TextView) findViewById(R.id.txtAgregarClase);
+
+
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +62,9 @@ public class AgregarClase extends AppCompatActivity {
         });
     }
     public void addClase(){
+        /*
+            Getting the values of the user input in order to create the Object
+         */
         String name = mNombre.getText().toString().trim();
         String cicloV = ciclo.getText().toString().trim();
         String nivelV = nivel.getText().toString().trim();
@@ -60,11 +73,17 @@ public class AgregarClase extends AppCompatActivity {
         String horarioV = horario.getText().toString().trim();
         if(!name.isEmpty() && !cicloV.isEmpty()&& !nivelV.isEmpty()&& !salonV.isEmpty()&& !horarioV.isEmpty()){
             String user_ = user.getEmail().replace(".",     "_");
+            /*
+                Making the reference to the user database part
+             */
             DatabaseReference ref = databaseClases.child(user_).getRef();
             String idClase = ref.push().getKey();
-            Clase clase = new Clase(idClase,salonV,nivelV,name,maestroV,horarioV);
+            Clase clase = new Clase(idClase, salonV, nivelV, name, maestroV, horarioV);
+            /*
+                Creating the Object in the Firebase Database
+             */
             ref.child(idClase).setValue(clase);
-            titulo.setText("clase agregada");
+            titulo.setText("Clase agregada");
         }
     }
 }

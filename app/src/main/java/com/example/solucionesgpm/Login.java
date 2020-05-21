@@ -35,7 +35,12 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        // Creating the Auth service
         mFirebaseAuth = FirebaseAuth.getInstance();
+
+        /*
+            Getting all the reference to the input from the from
+         */
         emailId = findViewById(R.id.emailId);
         password = findViewById(R.id.password);
         btnSignUp = findViewById(R.id.email_sign_in_button);
@@ -50,15 +55,16 @@ public class Login extends AppCompatActivity {
                     emailId.requestFocus();
                 }
                 if(pwd.isEmpty()){
-                    password.setError("Ingresa tu contrasena");
+                    password.setError("Ingresa tu contraseña");
                     password.requestFocus();
                 }
                 if(!(email.isEmpty() && pwd.isEmpty())){
+                    // Asking Firebase if the credentials given by the user exist in our Database
                     mFirebaseAuth.signInWithEmailAndPassword(email,pwd).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (!task.isSuccessful()){
-                                tvSignIn.setText("usario o contrasena incorrecto");
+                                tvSignIn.setText("Usuario o contraseña incorrecto");
                             }else{
                                 tvSignIn.setText("Ingresando");
                                 Intent intent = new Intent(Login.this, MainMenu.class);
@@ -69,8 +75,5 @@ public class Login extends AppCompatActivity {
                 }
             }
         });
-
-
-
     }
 }
