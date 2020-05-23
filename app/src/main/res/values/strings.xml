@@ -4,6 +4,21 @@
     <string name="btnClassChoices">Seleccionar</string>
     <string name="pick_toppings">Opciones</string>
     <string name="cancel">Cancelar</string>
-    <string name="ok">Aceptar</string>>
+    <string name="ok">Aceptar</string>
+    <string name="txtWelcome">Bienvenido</string>
+    <string name="email_input">Email</string>
+    <string name="btnIngresar">Ingresar</string>
+    <string name="logoUp">logo UP</string>
+    <string name="pass_input">Contraseña</string>
+    <string name="menu_label">Menu</string>
+    <string name="btnVer">Ver</string>
+    <string name="ver_label">Ver</string>
+    <string name="btn_verClases">Ver clases</string>
+    <string name="btn_verMaestros">Ver maestros</string>
+    <string name="btn_regresar">Regresar</string>
+    <string name="btn_agregarClases">Agregar clases</string>
+    <string name="btn_agregarMaestros">agregar maestros</string>
+    <string name="manual">Manual de Uso</string>
+    <string name="logoUP">logo UP</string>>
 
 </resources>

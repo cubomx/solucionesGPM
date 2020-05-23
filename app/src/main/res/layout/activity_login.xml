@@ -21,6 +21,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <LinearLayout
                     android:id="@+id/email_login_form"
                     android:layout_width="match_parent"
@@ -37,36 +38,39 @@
                         android:layout_width="200dp"
                         android:layout_height="160dp"
                         android:layout_gravity="center"
-                        app:srcCompat="@mipmap/logo" />
+                        app:srcCompat="@mipmap/logo"
+                        android:contentDescription="@string/logoUp" />
 
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="20dp"
-                        android:text="Bienvenido"
+                        android:text="@string/txtWelcome"
                         android:textAlignment="center"
                         android:textColor="@color/colorWhite"
                         android:textSize="24sp" />
 
                     <EditText
                         android:id="@+id/emailId"
-                        android:hint="Email"
+                        android:hint="@string/email_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:textColor="@color/colorWhite"
 
-                        android:inputType="textEmailAddress" />
+                        android:inputType="textEmailAddress"
+                        android:autofillHints="" />
 
                     <EditText
                         android:id="@+id/password"
-                        android:hint="Contrasena"
+                        android:hint="@string/pass_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:textColor="@color/colorWhite"
-                        android:inputType="textPassword" />
+                        android:inputType="textPassword"
+                        android:autofillHints="" />
 
 
                     <Button
@@ -74,10 +78,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="Ingresar"
+                        android:text="@string/btnIngresar"
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"/>
-
 
 
                 </LinearLayout>

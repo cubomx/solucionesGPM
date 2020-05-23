@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".VerMaestro"></activity>
+        <activity android:name=".Manual"></activity>
+        <activity android:name=".Ver" />
+        <activity android:name=".VerMaestro" />
         <activity android:name=".VerClase" />
         <activity android:name=".AgregarMaestro" />
         <activity android:name=".AgregarClase" />

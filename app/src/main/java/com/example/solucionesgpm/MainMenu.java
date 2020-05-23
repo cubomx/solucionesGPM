@@ -17,33 +17,28 @@ import com.google.firebase.database.FirebaseDatabase;
 import android.os.Bundle;
 
 public class MainMenu extends AppCompatActivity {
-    Button btnVerClase;
-    Button btnVerMaestro;
     Button btnAgregarMaestro;
     Button btnAgregarClase;
+    Button btnVer;
+    Button manual;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        btnVerClase = findViewById(R.id.viewClases);
-        btnVerMaestro = findViewById(R.id.viewMaestros);
+        btnVer = findViewById(R.id.viewClases);
         btnAgregarMaestro = findViewById(R.id.addMaestros);
         btnAgregarClase = findViewById(R.id.addClases);
-        btnVerClase.setOnClickListener(new View.OnClickListener() {
+        manual = findViewById(R.id.manual);
+
+        btnVer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainMenu.this, VerClase.class);
+                Intent intent = new Intent(getApplicationContext(),  Ver.class);
                 startActivity(intent);
             }
         });
-        btnVerMaestro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainMenu.this, VerMaestro.class);
-                startActivity(intent);
-            }
-        });
+
         btnAgregarMaestro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +50,14 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AgregarClase.class);
+                startActivity(intent);
+            }
+        });
+
+        manual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Manual.class);
                 startActivity(intent);
             }
         });

@@ -37,7 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="20dp"
-                    android:text="@string/menu_label"
+                    android:text="@string/ver_label"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
                     android:textSize="24sp" />
@@ -48,33 +48,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="@string/btnVer"
-                    android:textColor="@color/colorWhite"
-                    android:textStyle="normal" />
-
-                <Button
-                    android:id="@+id/addClases"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/btn_agregarClases"
+                    android:text="@string/btn_verClases"
                     android:textColor="@color/colorWhite"
                     android:textStyle="normal"/>
                 <Button
-                    android:id="@+id/addMaestros"
+                    android:id="@+id/viewMaestros"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="@string/btn_agregarMaestros"
+                    android:text="@string/btn_verMaestros"
                     android:textColor="@color/colorWhite"
                     android:textStyle="normal"/>
 
                 <Button
-                    android:id="@+id/manual"
+                    android:id="@+id/regresar_ver"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="@string/manual"
+                    android:text="@string/btn_regresar"
                     android:textColor="@color/colorWhite"
                     android:textStyle="normal" />
 
