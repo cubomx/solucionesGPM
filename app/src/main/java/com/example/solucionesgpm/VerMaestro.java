@@ -11,6 +11,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -110,46 +111,52 @@ public class VerMaestro extends AppCompatActivity {
         return builder.create();
     }
 
+    private ArrayList<String> getInfo(DataSnapshot dataSnapshot, ArrayList<Integer> opciones, ArrayList <String> teachers){
+        Map<String, Object> data = (Map<String, Object>) dataSnapshot.getValue();
+        for (Map.Entry<String, Object> entry : data.entrySet()){
+            Map info = (Map) entry.getValue();
+            /*
+                Getting the values from the options selected by the user
+             */
+            StringBuilder stringBuilder = new StringBuilder();
+            for (Integer item : opciones){
+                switch (item){
+                    case 0:
+                        stringBuilder.append(info.get("nombre").toString() + "\n");
+                        break;
+                    case 1:
+                        stringBuilder.append(info.get("edad").toString() +  "\n");
+                        break;
+                    case 2:
+                        stringBuilder.append(info.get("sexo").toString() + "\n");
+                        break;
+                    case 3:
+                        stringBuilder.append(info.get("clase").toString()+ "\n");
+                        break;
+                    default:
+                        break;
+                }
+            }
+            teachers.add(stringBuilder.toString());
+        }
+        return teachers;
+    }
+
     private void getTeachers (DatabaseReference ref, final ArrayList<Integer> opciones, final Context ctx){
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                /*
-                    Getting all the objects from the user (in this case, all the classes)
-                 */
-                Map<String, Object> data = (Map<String, Object>) dataSnapshot.getValue();
 
 
                 ArrayList<String> teachers = new ArrayList<>();
-                for (Map.Entry<String, Object> entry : data.entrySet()){
 
-                    Map info = (Map) entry.getValue();
-                    // info.get(<specific key>);
-
+                if(dataSnapshot.exists()){
                     /*
-                        Getting the values from the options selected by the user
+                        Getting all the objects from the user (in this case, all the classes)
                      */
-                    StringBuilder stringBuilder = new StringBuilder();
-                    for (Integer item : opciones){
-                        switch (item){
-                            case 0:
-                                stringBuilder.append(info.get("nombre").toString() + "\n");
-                                break;
-                            case 1:
-                                stringBuilder.append(info.get("edad").toString() +  "\n");
-                                break;
-                            case 2:
-                                stringBuilder.append(info.get("sexo").toString() + "\n");
-                                break;
-                            case 3:
-                                stringBuilder.append(info.get("clase").toString()+ "\n");
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                    teachers.add(stringBuilder.toString());
+                    teachers = getInfo(dataSnapshot, opciones, teachers);
                 }
+
                 if (teachers.size() == 0){
                     teachers.add("No se encontro ningún maestro registrado");
                     Messages.warnUser(ctx, "No hay ninguna entrada relacionada");
@@ -160,7 +167,7 @@ public class VerMaestro extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
-                System.out.println("ERROR: ");
+                Messages.databaseError(ctx, error.toString());
             }
         });
     }

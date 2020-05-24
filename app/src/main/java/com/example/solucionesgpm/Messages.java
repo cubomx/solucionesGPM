@@ -14,4 +14,9 @@ public class Messages {
         Toast toast = Toast.makeText(ctx, message, Toast.LENGTH_SHORT);
         toast.show();
     }
+
+    public static void databaseError(Context ctx, String error){
+        Toast toast = Toast.makeText(ctx, error, Toast.LENGTH_SHORT);
+        toast.show();
+    }
 }

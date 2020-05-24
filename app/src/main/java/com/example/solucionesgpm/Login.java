@@ -51,7 +51,7 @@ public class Login extends AppCompatActivity {
                 String email =emailId.getText().toString();
                 String pwd = password.getText().toString();
                 if(email.isEmpty()){
-                    emailId.setError("Ingresa Email");
+                    emailId.setError("Ingrese Email");
                     emailId.requestFocus();
                 }
                 if(pwd.isEmpty()){

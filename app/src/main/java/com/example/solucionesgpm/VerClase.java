@@ -101,7 +101,7 @@ public class VerClase extends AppCompatActivity {
                         if (selectedItems.size() == 3){
                             Collections.sort(selectedItems);
                             // Retrieving the data about the classes and showing to the user
-                            getClasses(ref, selectedItems);
+                            getClasses(ref, selectedItems, ctx);
                         }
                         else{
                             // Telling the user that exactly 3 options must be selected
@@ -121,51 +121,53 @@ public class VerClase extends AppCompatActivity {
 
 
 
-    private void getClasses (DatabaseReference ref, final ArrayList<Integer> opciones){
+    private void getClasses (DatabaseReference ref, final ArrayList<Integer> opciones, final Context ctx){
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 /*
                     Getting all the objects from the user (in this case, all the classes)
                  */
-                Map<String, Object> data = (Map<String, Object>) dataSnapshot.getValue();
-
-
                 ArrayList<String> clases = new ArrayList<>();
-                for (Map.Entry<String, Object> entry : data.entrySet()){
+                if (dataSnapshot.exists()){
+                    Map<String, Object> data = (Map<String, Object>) dataSnapshot.getValue();
+                    for (Map.Entry<String, Object> entry : data.entrySet()){
 
-                    Map info = (Map) entry.getValue();
-                    // info.get(<specific key>);
+                        Map info = (Map) entry.getValue();
+                        // info.get(<specific key>);
 
                     /*
                         Getting the values from the options selected by the user
                      */
-                    StringBuilder stringBuilder = new StringBuilder();
-                    for (Integer item : opciones){
-                        switch (item){
-                            case 0:
-                                System.out.println(info.get("name").toString());
-                                stringBuilder.append(info.get("name").toString() + "\n");
-                                break;
-                            case 1:
-                                stringBuilder.append(info.get("level").toString() +  "\n");
-                                break;
-                            case 2:
-                                stringBuilder.append(info.get("classroom").toString() + "\n");
-                                break;
-                            case 3:
-                                stringBuilder.append(info.get("time").toString()+ "\n");
-                                break;
-                            case 4:
-                                stringBuilder.append(info.get("professor").toString() + "\n");
-                                break;
-                            default:
-                                System.out.println("\n\nSIII\n\n");
-                                break;
+                        StringBuilder stringBuilder = new StringBuilder();
+                        for (Integer item : opciones){
+                            switch (item){
+                                case 0:
+                                    System.out.println(info.get("name").toString());
+                                    stringBuilder.append(info.get("name").toString() + "\n");
+                                    break;
+                                case 1:
+                                    stringBuilder.append(info.get("level").toString() +  "\n");
+                                    break;
+                                case 2:
+                                    stringBuilder.append(info.get("classroom").toString() + "\n");
+                                    break;
+                                case 3:
+                                    stringBuilder.append(info.get("time").toString()+ "\n");
+                                    break;
+                                case 4:
+                                    stringBuilder.append(info.get("professor").toString() + "\n");
+                                    break;
+                                default:
+                                    System.out.println("\n\nSIII\n\n");
+                                    break;
+                            }
                         }
+                        clases.add(stringBuilder.toString());
                     }
-                    clases.add(stringBuilder.toString());
+
                 }
+
                 if (clases.size() == 0){
                     clases.add("No se encontro clase registrada");
                 }
@@ -175,7 +177,7 @@ public class VerClase extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
-                System.out.println("ERROR: ");
+                Messages.databaseError(ctx, error.toString());
             }
         });
     }
