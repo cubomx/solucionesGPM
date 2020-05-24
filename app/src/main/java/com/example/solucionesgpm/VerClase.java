@@ -51,7 +51,7 @@ public class VerClase extends AppCompatActivity {
         /*
             Making the reference to the user database place
          */
-        db = FirebaseDatabase.getInstance().getReference("clases");
+        db = FirebaseDatabase.getInstance().getReference("ver");
         final DatabaseReference ref = db.child(user_).getRef();
 
 

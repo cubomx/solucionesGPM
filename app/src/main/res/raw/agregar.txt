@@ -1,0 +1,11 @@
+Ventana Agregar Clases/Agregar Maestros
+Al ingresar a la pantalla de agregar clases (tiene la misma funcionalidad, solo cambia los campos de ingreso) se presenta la siguiente estructura:
+Un label con el texto de «Agregar clase».
+Los campos de los datos que se quieren recabar.
+Un botón de Agregar.
+
+La cantidad de campos difiere si Agregar Clase o Agregar Maestro, tanto en cantidad como en la información que se le pide al usuario.
+
+Al presionar el botón de Agregar, el sistema busca la referencia en la Base de Datos e inserta el registro hecho por el usuario. Al completarse, el label cambiará a «Clase agregada» (o «Maestro agregado»).
+
+El registro se insertará en la subtabla correspondiente, haciendo referencia al usuario al que pertenece dicho registro.

@@ -1,0 +1,15 @@
+Ventana de Ver
+En esta ventana el usuario podrá ver los siguientes elementos de la interfaz gráfica:
+El Logotipo de la Universidad Panamericana.
+Un texto debajo «Ver».
+Botón de Ver Clases.
+Botón de Ver Maestros.
+Botón de Regresar.
+
+El botón de Ver clases enviará a la ventana de Ver clases en la que podrá seleccionar qué información desea ver.
+
+El botón de Ver maestros enviará a la ventana de Ver maestros en la que podrá hacer algo semejante a Ver clases.
+
+El botón de Regresar hará la sencilla acción de abandonar la ventana actual y mostrar la de Menú principal.
+
+Ya que la ventana de Ver Maestros tiene la misma funcionalidad que la de Ver Clases, solo mostraremos una ya que solo cambia las opciones que se pueden escoger.

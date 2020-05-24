@@ -6,4 +6,58 @@
     android:layout_height="match_parent"
     tools:context=".Manual">
 
+    <Button
+        android:id="@+id/verBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
+        android:background="#EC0606"
+        android:text="@string/btnVer"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/agregarBtn"
+        app:layout_constraintHorizontal_bias="0.351"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/agregarBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="84dp"
+        android:background="#EC0606"
+        android:text="@string/btnAgregar"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtInfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="164dp"
+        android:layout_marginEnd="34dp"
+        android:fontFamily="serif"
+        android:scrollbars="vertical"
+        android:text="@string/txtInfo"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/labelInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="@string/manualLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verBtn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

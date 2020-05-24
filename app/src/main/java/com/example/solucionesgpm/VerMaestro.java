@@ -46,7 +46,7 @@ public class VerMaestro extends AppCompatActivity {
         user = mAuth.getCurrentUser();
         String user_ = user.getEmail().replace(".",     "_");
 
-        db = FirebaseDatabase.getInstance().getReference("maestros");
+        db = FirebaseDatabase.getInstance().getReference("agregar");
         final DatabaseReference ref = db.child(user_).getRef();
 
         /*
