@@ -47,11 +47,11 @@ public class VerClase extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         String user_ = user.getEmail().replace(".",     "_");
-
+        System.out.println("USER:::" + user_);
         /*
             Making the reference to the user database place
          */
-        db = FirebaseDatabase.getInstance().getReference("ver");
+        db = FirebaseDatabase.getInstance().getReference("clases");
         final DatabaseReference ref = db.child(user_).getRef();
 
 
@@ -139,6 +139,7 @@ public class VerClase extends AppCompatActivity {
                     /*
                         Getting the values from the options selected by the user
                      */
+                        System.out.println(info.toString());
                         StringBuilder stringBuilder = new StringBuilder();
                         for (Integer item : opciones){
                             switch (item){

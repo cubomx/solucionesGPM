@@ -19,7 +19,7 @@ public class Ver extends AppCompatActivity {
 
         btnVerClase = findViewById(R.id.viewClases);
         btnVerMaestro = findViewById(R.id.viewMaestros);
-        btnRegresar = findViewById(R.id.regresar_ver);
+        btnRegresar = findViewById(R.id.back_to);
 
         btnVerClase.setOnClickListener(new View.OnClickListener() {
             @Override

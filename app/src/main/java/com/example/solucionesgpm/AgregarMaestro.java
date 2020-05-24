@@ -30,7 +30,7 @@ public class AgregarMaestro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_maestro);
-        databaseClases = FirebaseDatabase.getInstance().getReference("agregar");
+        databaseClases = FirebaseDatabase.getInstance().getReference("maestros");
 
         /*
             Getting the credentials from the user

@@ -21,8 +21,10 @@
     <string name="manual">Manual de Uso</string>
     <string name="logoUP">logo UP</string>
     <string name="btnClases">Clases</string>
-    <string name="btnAgregar">agregar</string>
+    <string name="btnAgregar">Agregar</string>
     <string name="txtInfo">La aplicación funciona de la siguiente manera</string>
     <string name="manualLabel">Manual de Uso</string>
+    <string name="btnLogOut">Cerrar sesión</string>
+
 
 </resources>

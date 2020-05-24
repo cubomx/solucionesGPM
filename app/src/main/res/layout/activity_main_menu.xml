@@ -53,21 +53,13 @@
                     android:textStyle="normal" />
 
                 <Button
-                    android:id="@+id/addClases"
+                    android:id="@+id/add"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="@string/btn_agregarClases"
+                    android:text="@string/btnAgregar"
                     android:textColor="@color/colorWhite"
-                    android:textStyle="normal"/>
-                <Button
-                    android:id="@+id/addMaestros"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/btn_agregarMaestros"
-                    android:textColor="@color/colorWhite"
-                    android:textStyle="normal"/>
+                    android:textStyle="normal" />
 
                 <Button
                     android:id="@+id/manual"
@@ -75,6 +67,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/manual"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="normal" />
+
+                <Button
+                    android:id="@+id/logOut"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/btnLogOut"
                     android:textColor="@color/colorWhite"
                     android:textStyle="normal" />
 

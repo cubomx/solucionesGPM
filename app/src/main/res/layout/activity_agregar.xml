@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <LinearLayout
@@ -15,6 +14,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <LinearLayout
                 android:id="@+id/tituloMain"
                 android:layout_width="match_parent"
@@ -24,50 +24,49 @@
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
+
                 <ImageView
                     android:id="@+id/img2"
                     android:layout_width="200dp"
                     android:layout_height="160dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@mipmap/logo"
-                    android:contentDescription="@string/logoUP" />
+                    android:contentDescription="@string/logoUP"
+                    app:srcCompat="@mipmap/logo" />
 
                 <TextView
                     android:id="@+id/tituloM"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:paddingBottom="20dp"
-                    android:text="@string/ver_label"
+                    android:text="@string/btnAgregar"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
                     android:textSize="24sp" />
 
-
                 <Button
-                    android:id="@+id/viewClases"
+                    android:id="@+id/addClases"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="@string/btn_verClases"
-                    android:textColor="@color/colorWhite"
-                    android:textStyle="normal"/>
+                    android:text="@string/btn_agregarClases"
+                    android:textColor="#FFFFFF" />
+
                 <Button
-                    android:id="@+id/viewMaestros"
+                    android:id="@+id/addMaestros"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="@string/btn_verMaestros"
-                    android:textColor="@color/colorWhite"
-                    android:textStyle="normal"/>
+                    android:text="@string/btn_agregarMaestros"
+                    android:textColor="#FFFFFF" />
 
                 <Button
-                    android:id="@+id/back_to"
+                    android:id="@+id/back"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/btn_regresar"
-                    android:textColor="@color/colorWhite"
-                    android:textStyle="normal" />
+                    android:textColor="#FFFFFF" />
 
 
             </LinearLayout>

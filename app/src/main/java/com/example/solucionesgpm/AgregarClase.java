@@ -33,7 +33,7 @@ public class AgregarClase extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_clase);
-        databaseClases = FirebaseDatabase.getInstance().getReference("ver");
+        databaseClases = FirebaseDatabase.getInstance().getReference("clases");
 
         /*
             Getting the credentials from the user

@@ -12,44 +12,30 @@ import android.widget.Button;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import android.os.Bundle;
 
 public class MainMenu extends AppCompatActivity {
-    Button btnAgregarMaestro;
-    Button btnAgregarClase;
+    Button cerrarSesion;
     Button btnVer;
     Button manual;
+    Button btnAgregar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
         btnVer = findViewById(R.id.viewClases);
-        btnAgregarMaestro = findViewById(R.id.addMaestros);
-        btnAgregarClase = findViewById(R.id.addClases);
         manual = findViewById(R.id.manual);
+        btnAgregar = findViewById(R.id.add);
+        cerrarSesion = findViewById(R.id.logOut);
 
         btnVer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),  Ver.class);
-                startActivity(intent);
-            }
-        });
-
-        btnAgregarMaestro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),  AgregarMaestro.class);
-                startActivity(intent);
-            }
-        });
-        btnAgregarClase.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AgregarClase.class);
                 startActivity(intent);
             }
         });
@@ -61,5 +47,25 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btnAgregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Agregar.class);
+                startActivity(intent);
+            }
+        });
+
+        cerrarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logOut();
+            }
+        });
+    }
+
+    private void logOut(){
+        FirebaseAuth.getInstance().signOut();
+        finish();
     }
 }
