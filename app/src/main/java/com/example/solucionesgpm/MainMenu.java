@@ -67,5 +67,7 @@ public class MainMenu extends AppCompatActivity {
     private void logOut(){
         FirebaseAuth.getInstance().signOut();
         finish();
+        Intent intent = new Intent(getApplicationContext(), Login.class);
+        startActivity(intent);
     }
 }

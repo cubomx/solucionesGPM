@@ -97,7 +97,7 @@ public class VerMaestro extends AppCompatActivity {
                         }
                         else{
                             // Telling the user that exactly 3 options must be selected
-
+                            Messages.askFor(ctx, "Debes seleccionar exactamente 3");
                         }
                     }
                 })
