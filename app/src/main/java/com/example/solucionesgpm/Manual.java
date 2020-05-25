@@ -2,6 +2,7 @@ package com.example.solucionesgpm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -16,6 +17,7 @@ public class Manual extends AppCompatActivity {
     private TextView info;
     private Button verInfo;
     private Button agregarInfo;
+    private Button back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,15 @@ public class Manual extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 changeText(R.raw.agregar);
+            }
+        });
+
+        back = findViewById(R.id.back_manual);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainMenu.class));
             }
         });
 

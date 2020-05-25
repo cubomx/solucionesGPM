@@ -2,6 +2,7 @@ package com.example.solucionesgpm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -15,6 +16,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.BufferedReader;
+
 public class AgregarMaestro extends AppCompatActivity {
     EditText mNombre;
     EditText edad;
@@ -25,6 +28,7 @@ public class AgregarMaestro extends AppCompatActivity {
     DatabaseReference databaseClases;
     FirebaseAuth mAuth;
     FirebaseUser user;
+    Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,16 @@ public class AgregarMaestro extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addMaestro();
+            }
+        });
+
+        back = findViewById(R.id.back_agregarM);
+
+        /* Returning to the previous activity*/
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Agregar.class));
             }
         });
     }

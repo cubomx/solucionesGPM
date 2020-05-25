@@ -2,6 +2,7 @@ package com.example.solucionesgpm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -24,6 +25,7 @@ public class AgregarClase extends AppCompatActivity {
     EditText horario;
     EditText maestro;
     Button btnAdd;
+    Button back;
     TextView titulo;
     DatabaseReference databaseClases;
     FirebaseAuth mAuth;
@@ -58,6 +60,16 @@ public class AgregarClase extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addClase();
+            }
+        });
+
+        back = findViewById(R.id.back_agregarC);
+
+        /* Returning to the previous activity*/
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Agregar.class));
             }
         });
     }

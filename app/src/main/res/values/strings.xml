@@ -25,6 +25,7 @@
     <string name="txtInfo">La aplicación funciona de la siguiente manera</string>
     <string name="manualLabel">Manual de Uso</string>
     <string name="btnLogOut">Cerrar sesión</string>
+    <string name="bnt_atras">Atrás</string>
 
 
 </resources>
